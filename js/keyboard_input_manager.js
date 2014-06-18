@@ -129,7 +129,37 @@ KeyboardInputManager.prototype.listen = function () {
 
     if (Math.max(absDx, absDy) > 10) {
       // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      //self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      var res = 0;
+      var temp = absDy / absDx;
+      if (temp > 1.732)
+      {
+      	res = absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0);
+      }
+      else if (temp < 0.5)
+      {
+      	res = absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0);
+      }
+      else
+      {
+      	if (dx > 0 && dy > 0)
+      	{
+      		res = 6;
+      	}
+      	else if  (dx > 0 && dy < 0)
+      	{
+      		res = 7;
+      	}
+      	else if  (dx < 0 && dy > 0)
+      	{
+      		res = 4;
+      	}
+      	else if  (dx < 0 && dy < 0)
+      	{
+      		res = 5;
+      	}
+      }
+      self.emit("move", res);
     }
   });
 };
