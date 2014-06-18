@@ -142,19 +142,19 @@ KeyboardInputManager.prototype.listen = function () {
       }
       else
       {
-      	if (dx > 0 && dy > 0)
+      	if (dx > 0 && dy < 0)
       	{
       		res = 6;
       	}
-      	else if  (dx > 0 && dy < 0)
+      	else if  (dx > 0 && dy > 0)
       	{
       		res = 7;
       	}
-      	else if  (dx < 0 && dy > 0)
+      	else if  (dx < 0 && dy < 0)
       	{
       		res = 4;
       	}
-      	else if  (dx < 0 && dy < 0)
+      	else if  (dx < 0 && dy > 0)
       	{
       		res = 5;
       	}
